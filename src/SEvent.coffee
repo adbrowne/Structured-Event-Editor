@@ -1,4 +1,1 @@
-class SEvent
-    name: "Andrew"
-
-window.SEvent = SEvent
+class @TimelineEvent extends Backbone.Model

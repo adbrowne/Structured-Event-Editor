@@ -1,6 +1,14 @@
-console.log("Testing")
+describe "TimelineEvent model", -> 
+    describe "when instantiated", ->
+        timelineEvent = {}
+        beforeEach ->
+            timelineEvent = new TimelineEvent({
+                text: 'Some text'
+            })
+            breakMe()
+        
+        it "should exhibit attributes", ->
+            expect(timelineEvent.get('text')).toEqual('Some text')
 
-describe "Event", -> 
-    it "should be be able to display a box", ->
-        mySEvent = new SEvent();
-        expect(mySEvent.name).toEqual("Andrew");
+        it "should exhibit attributes2", ->
+            expect(timelineEvent.get('text')).toEqual('Some text')
