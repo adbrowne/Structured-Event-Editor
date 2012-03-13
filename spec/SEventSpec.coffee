@@ -1,10 +1,11 @@
 describe "TimelineEvent model", -> 
+    timelineEvent = {}
+    beforeEach ->
+        timelineEvent = new TimelineEvent({
+            text: 'Some text'
+        })
+    
     describe "when instantiated", ->
-        timelineEvent = {}
-        beforeEach ->
-            timelineEvent = new TimelineEvent({
-                text: 'Some text'
-            })
             breakMe()
         
         it "should exhibit attributes", ->
@@ -17,4 +18,24 @@ describe "TimelineEvent model", ->
             threshold = 100
             expect(now - eventWhen).toBeLessThan(threshold)
 
-        return 
+    describe "url", ->
+        collection = {}
+        beforeEach ->
+            collection = {
+                url: "/collection"
+            }
+            timelineEvent.collection = collection
+             
+        it "should set the URL to the collection URL", ->
+            expect(timelineEvent.url()).toEqual("/collection")
+
+        describe "when no id is set", ->
+            it "should return the collection URL", ->
+                expect(timelineEvent.url()).toEqual("/collection")
+
+        describe "when id is set", ->
+            it "should return the collection URL and id", ->
+                timelineEvent.id = 1
+                expect(timelineEvent.url()).toEqual("/collection/1")
+        return
+    return
