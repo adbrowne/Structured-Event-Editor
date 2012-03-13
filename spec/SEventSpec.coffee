@@ -37,5 +37,3 @@ describe "TimelineEvent model", ->
             it "should return the collection URL and id", ->
                 timelineEvent.id = 1
                 expect(timelineEvent.url()).toEqual("/collection/1")
-        return
-    return
