@@ -37,3 +37,13 @@ describe "TimelineEvent model", ->
             it "should return the collection URL and id", ->
                 timelineEvent.id = 1
                 expect(timelineEvent.url()).toEqual("/collection/1")
+
+        it "should not save when the text is empty", ->
+            eventSpy = sinon.spy()
+            timelineEvent.bind("error", eventSpy)
+            timelineEvent.save({"text": ""});
+            expect(eventSpy.calledOnce).toBeTruthy()
+            expect(eventSpy.calledWith(
+                timelineEvent,
+                "cannot have an empty post"
+            )).toBeTruthy()
